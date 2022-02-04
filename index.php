@@ -4,9 +4,18 @@
 
     <?php while (have_posts()): the_post(); ?>
 
-        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+    <div class="flex flex-col md:flex-row items-center mb-8">
+        <?php if (has_post_thumbnail()): ?>
+            <a href="<?php the_permalink(); ?>" class="md:w-1/4 mr-4">
+                <?php the_post_thumbnail('medium'); ?>
+            </a>
+        <?php endif; ?>
 
-        <?php the_excerpt(); ?>
+        <div class="md:w-3/4">
+            <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+             <?php the_excerpt(); ?>
+        </div>
+    </div>
 
     <?php endwhile; ?>
 
